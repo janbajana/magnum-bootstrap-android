@@ -1,0 +1,63 @@
+dslocal@DESKTOP-A355MRR MINGW64 /e/Git/magnum-bootstrap-android (master)
+$ /c/Gradle/gradle-4.10.1/bin/gradle.bat build
+
+> Task :generateJsonModelDebug
+debug|arm64-v8a :-- Check for working C compiler: C:/Users/dslocal/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/clang.exe
+debug|arm64-v8a :-- Check for working C compiler: C:/Users/dslocal/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/clang.exe -- works
+debug|arm64-v8a :-- Detecting C compiler ABI info
+debug|arm64-v8a :-- Detecting C compiler ABI info - done
+debug|arm64-v8a :-- Detecting C compile features
+debug|arm64-v8a :-- Detecting C compile features - done
+debug|arm64-v8a :-- Check for working CXX compiler: C:/Users/dslocal/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/clang++.exe
+debug|arm64-v8a :-- Check for working CXX compiler: C:/Users/dslocal/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/clang++.exe -- works
+debug|arm64-v8a :-- Detecting CXX compiler ABI info
+debug|arm64-v8a :-- Detecting CXX compiler ABI info - done
+debug|arm64-v8a :-- Detecting CXX compile features
+debug|arm64-v8a :-- Detecting CXX compile features - done
+debug|arm64-v8a :-- Found Corrade: E:/Git/magnum-bootstrap-android/libraries/include  found components:  Containers rc Utility
+debug|arm64-v8a :-- Found OpenGLES2: C:/Users/dslocal/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/lib/aarch64-linux-android/26/libGLESv2.so
+debug|arm64-v8a :-- Found Magnum: E:/Git/magnum-bootstrap-android/libraries/include  found components:  GL 
+debug|arm64-v8a :-- LIB_SUFFIX variable is not defined. It will be autodetected now.  
+debug|arm64-v8a :-- You can set it manually with -DLIB_SUFFIX=<value> (64 for example)
+debug|arm64-v8a :-- LIB_SUFFIX autodetected as '64', libraries will be installed into C:/Program Files (x86)/MyApplication/lib64
+debug|arm64-v8a :-- Found EGL: C:/Users/dslocal/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/lib/aarch64-linux-android/26/libEGL.so
+debug|arm64-v8a :-- Found Magnum: E:/Git/magnum-bootstrap-android/libraries/include  found components:  GL AndroidApplication 
+debug|arm64-v8a :-- Configuring done
+debug|arm64-v8a :-- Generating done
+debug|arm64-v8a :-- Build files have been written to: E:/Git/magnum-bootstrap-android/.externalNativeBuild/cmake/debug/arm64-v8a
+
+> Task :externalNativeBuildDebug FAILED
+Build MyApplication arm64-v8a
+[1/2] Building CXX object src/CMakeFiles/MyApplication.dir/MyApplication.cpp.o
+[2/2] Linking CXX shared library ..\..\..\..\build\intermediates\cmake\debug\obj\arm64-v8a\libMyApplication.so
+FAILED: cmd.exe /C "cd . && C:\Users\dslocal\AppData\Local\Android\Sdk\ndk-bundle\toolchains\llvm\prebuilt\windows-x86_64\bin\clang++.exe  --target=aarch64-none-linux-android26 --gcc-toolchain=C:/Users/dslocal/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/dslocal/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot -fPIC -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security   -O0 -fno-limit-debug-info  -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libatomic.a -static-libstdc++ -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings -Wl,--no-undefined -Qunused-arguments -Wl,-z,noexecstack -shared -Wl,-soname,libMyApplication.so -o ..\..\..\..\build\intermediates\cmake\debug\obj\arm64-v8a\libMyApplication.so src/CMakeFiles/MyApplication.dir/MyApplication.cpp.o  ../../../../libraries/lib/libMagnumAndroidApplication.a ../../../../libraries/lib/libMagnumGL.a ../../../../libraries/lib/libMagnum.a C:/Users/dslocal/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/lib/aarch64-linux-android/26/libGLESv2.so ../../../../libraries/lib/libCorradeUtility.a -llog -landroid C:/Users/dslocal/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/lib/aarch64-linux-android/26/libEGL.so -latomic -lm && cd ."
+../../../../libraries/lib/libMagnumAndroidApplication.a: error adding symbols: File in wrong format
+clang++: error: linker command failed with exit code 1 (use -v to see invocation)
+ninja: build stopped: subcommand
+ failed.
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':externalNativeBuildDebug'.
+> Build command failed.
+  Error while executing process C:\Users\dslocal\AppData\Local\Android\Sdk\cmake\3.6.4111459\bin\cmake.exe with arguments {--build E:\Git\magnum-bootstrap-android\.externalNativeBuild\cmake\debug\arm64-v8a --target MyApplication}
+  [1/2] Building CXX object src/CMakeFiles/MyApplication.dir/MyApplication.cpp.o
+  [2/2] Linking CXX shared library ..\..\..\..\build\intermediates\cmake\debug\obj\arm64-v8a\libMyApplication.so
+  FAILED: cmd.exe /C "cd . && C:\Users\dslocal\AppData\Local\Android\Sdk\ndk-bundle\toolchains\llvm\prebuilt\windows-x86_64\bin\clang++.exe  --target=aarch64-none-linux-android26 --gcc-toolchain=C:/Users/dslocal/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/dslocal/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot -fPIC -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security   -O0 
+-fno-limit-debug-info  -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libatomic.a -static-libstdc++ -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings -Wl,--no-undefined -Qunused-arguments -Wl,-z,noexecstack -shared -Wl,-soname,libMyApplication.so -o ..\..\..\..\build\intermediates\cmake\debug\obj\arm64-v8a\libMyApplication.so src/CMakeFiles/MyApplication.dir/MyApplication.cpp.o  ../../../../libraries/lib/libMagnumAndroidApplication.a ../../../../libraries/lib/libMagnumGL.a ../../../../libraries/lib/libMagnum.a C:/Users/dslocal/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/lib/aarch64-linux-android/26/libGLESv2.so ../../../../libraries/lib/libCorradeUtility.a -llog -landroid C:/Users/dslocal/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/lib/aarch64-linux-android/26/libEGL.so -latomic -lm && cd ."
+  ../../../../libraries/lib/libMagnumAndroidApplication.a: error adding symbols: File in wrong format
+
+  clang++: error: linker command failed with exit code 1 (use -v to see invocation)
+
+  ninja: build stopped: subcommand failed.
+
+
+
+* Try:
+Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output. Run with --scan to get full insights.
+
+* Get more help at https://help.gradle.org
+
+BUILD FAILED in 7s
+15 actionable tasks: 15 executed
