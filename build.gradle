@@ -28,11 +28,12 @@ android {
         externalNativeBuild {
             cmake {
                 arguments "-DANDROID_STL=c++_static",
-                          "-DCMAKE_PREFIX_PATH=${project.rootDir}/libraries",
-                          "-DCMAKE_FIND_ROOT_PATH=${project.rootDir}/libraries",
-                          "-DCORRADE_RC_EXECUTABLE=/c/Corrade/bin/corrade-rc.exe",
-                          "-DCMAKE_ANDROID_ARCH_ABI=arm64-v8a",
-                          "-DANDROID_TOOLCHAIN=clang"
+                        "-DCMAKE_PREFIX_PATH=${project.rootDir}/libraries",
+                        "-DCMAKE_FIND_ROOT_PATH=${project.rootDir}/libraries",
+                        "-DCORRADE_RC_EXECUTABLE=/c/Corrade/bin/corrade-rc.exe",
+                        "-DCMAKE_ANDROID_ARCH_ABI=arm64-v8a",
+                        "-DANDROID_ABI=arm64-v8a",
+                        "-DANDROID_TOOLCHAIN=clang"
             }
         }
         ndk {
