@@ -18,20 +18,29 @@ in mediump vec3 normal;
 in lowp vec3 color;
 
 out lowp vec3 interpolatedColor;
+out lowp vec3 vNormal;
 
 void main() {
     gl_Position = transformationProjectionMatrix*vec4(position, 1.0f);
     interpolatedColor = color;
+    vNormal = (transformationProjectionMatrix * vec4(normal.xyz, 0.0)).xyz;
 }
 )";
 
     static const std::string frgShader = R"(
 in lowp vec3 interpolatedColor;
+in lowp vec3 vNormal;
+
 out lowp vec4 fragmentColor;
 
 void main() {
-//    fragmentColor = vec4(interpolatedColor, 1.0f);
-    fragmentColor = vec4(1.0f, 1.0f, 1.0f, 1.0f);
+    lowp vec4 tmpFragmentColor = vec4(1.0f, 1.0f, 1.0f, 1.0f);
+
+    lowp vec3 normalNorm = normalize(vNormal);
+
+    lowp float diffuseAmount = dot(normalNorm, vec3(0.8f, 0.8f, 0.0f));
+    diffuseAmount = clamp(diffuseAmount, 0.8, 1.0);
+    fragmentColor = diffuseAmount * tmpFragmentColor;
 }
 )";
 
@@ -40,6 +49,16 @@ void main() {
         LOGD("DAQRI VertexColorShader 0\n");
 
         MAGNUM_ASSERT_GL_VERSION_SUPPORTED(GL::Version::GLES300);
+
+        const Utility::Resource rs0{"MagnumBootstrapData"};
+
+        std::vector<std::string> resList = rs0.list();
+        for(const auto &ress: resList)
+        {
+                LOGD("DAQRI res: %s \n", ress.c_str());
+        }
+
+            LOGD("DAQRI ress: %s \n", rs0.get("sample_texture.frag").c_str());
 
         const Utility::Resource rs{"MagnumShaders"};
 

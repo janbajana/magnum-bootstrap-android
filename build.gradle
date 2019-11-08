@@ -30,7 +30,7 @@ android {
                 arguments "-DANDROID_STL=c++_static",
                         "-DCMAKE_PREFIX_PATH=${project.rootDir}/libraries",
                         "-DCMAKE_FIND_ROOT_PATH=${project.rootDir}/libraries",
-                        "-DCORRADE_RC_EXECUTABLE=/c/Corrade/bin/corrade-rc.exe",
+                        "-DCORRADE_RC_EXECUTABLE=C:/Corrade/bin/corrade-rc.exe",
                         "-DANDROID_TOOLCHAIN=clang"
             }
         }

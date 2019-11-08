@@ -16,7 +16,7 @@
 #include <Magnum/Platform/AndroidApplication.h>
 #endif
 
-//#include "SampleTextureShader.h"
+#include "SampleTextureShader.h"
 #include "VertexColorShader.h"
 
 using namespace Magnum;
@@ -30,7 +30,7 @@ private:
     GL::Mesh _mesh;
     Shaders::VertexColor2D _shader;
 
-//    SampleTextureShader _sampleShader;
+    Magnum::SampleTextureShader _sampleShader;
     Magnum::VertexColorShader _vertexColorShader;
 
     Matrix4 _transformationMatrix, _projectionMatrix, _viewMatrix;
@@ -83,7 +83,7 @@ MyApplication::MyApplication(const Arguments& arguments): Platform::Application{
             .setIndexBuffer(std::move(indices), 0, indexType, indexStart, indexEnd);
 
     _transformationMatrix =
-            Matrix4::translation(Vector3::zAxis(-10.0f))*Matrix4::rotationX(30.0_degf)*Matrix4::rotationY(40.0_degf);
+            Matrix4::translation(Vector3::zAxis(-10.0f))*Matrix4::rotationX(25.0_degf)*Matrix4::rotationY(45.0_degf);
 
     _viewMatrix =
             Matrix4::translation({0.0f, 0.0f, 0.0f});
@@ -100,6 +100,7 @@ void MyApplication::drawEvent() {
     GL::defaultFramebuffer.clear(GL::FramebufferClear::Color);
 
     _vertexColorShader.setModelViewProjectionMatrix(_projectionMatrix*(_viewMatrix*_transformationMatrix));
+//    _sampleShader.setModelViewProjectionMatrix(_projectionMatrix*(_viewMatrix*_transformationMatrix));
     _mesh.draw(_vertexColorShader);
 
     swapBuffers();

@@ -11,7 +11,7 @@ set_directory_properties(PROPERTIES CORRADE_USE_PEDANTIC_FLAGS ON)
 file(GLOB native_heads "*.h")
 file(GLOB native_srcs "*.cpp")
 
-set_directory_properties(PROPERTIES CORRADE_USE_PEDANTIC_FLAGS ON)
+#set_directory_properties(PROPERTIES CORRADE_USE_PEDANTIC_FLAGS ON)
 
 corrade_add_resource(MagnumBootstrapData_RESOURCES resources/resources.conf)
 

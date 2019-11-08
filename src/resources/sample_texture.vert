@@ -1,20 +1,14 @@
-#version 300 es
+layout(location = 0) uniform mat4 transformationProjectionMatrix;
+layout(location = 1) uniform vec2 textureScale;
 
-in vec3 position;
-in vec3 normal;
-in vec2 texcoord0;
+in mediump vec3 position;
+in mediump vec3 normal;
+in mediump vec2 texcoord0;
 
-uniform mat4 projectionMatrix;
-uniform mat4 viewMatrix;
-uniform mat4 modelMatrix;
-uniform vec2 textureScale;
-
-out vec3 vWorldPos;
-out vec3 vWorldNormal;
 out vec2 vTexcoord0;
 
 void main()
 {
-    gl_Position = projectionMatrix * (viewMatrix * (modelMatrix * vec4(position, 1.0)));
+    gl_Position = transformationProjectionMatrix*vec4(position, 1.0f);
     vTexcoord0 = texcoord0 * textureScale;
 }

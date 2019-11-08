@@ -21,18 +21,20 @@ namespace Magnum {
             return *this;
         }
 
-        SampleTextureShader &setTransformationMatrix(const Matrix4 &matrix) {
-            setUniform(mTransformationMatrixUniform, matrix);
+        SampleTextureShader &setModelViewProjectionMatrix(const Matrix4 &matrix) {
+            setUniform(mTransformationProjectionMatrixUniform, matrix);
             return *this;
         }
 
-        SampleTextureShader &setProjectionMatrix(const Matrix4 &matrix) {
-            setUniform(mProjectionMatrixUniform, matrix);
+        SampleTextureShader &setColor(const Color3 &color)
+        {
+            setUniform(mColorUniform, color);
             return *this;
         }
 
-        SampleTextureShader &setViewMatrix(const Matrix4 &matrix) {
-            setUniform(mViewMatrixUniform, matrix);
+        SampleTextureShader &setTextureScale(const Vector3 &scale)
+        {
+            setUniform(mTextureScaleUnitform, scale);
             return *this;
         }
 
@@ -41,10 +43,10 @@ namespace Magnum {
             TextureUnit = 0
         };
 
-        Int _colorUniform;
-        Int mTransformationMatrixUniform{0};
-        Int mProjectionMatrixUniform{0};
-        Int mViewMatrixUniform{0};
+        Int mTransformationProjectionMatrixUniform{0};
+        Int mTextureScaleUnitform{1};
+        Int mColorUniform{2};
+
     };
 
 }
