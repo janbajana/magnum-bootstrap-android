@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-#ifndef HELLOVR_APP_SRC_MAIN_JNI_UTIL_H_  // NOLINT
-#define HELLOVR_APP_SRC_MAIN_JNI_UTIL_H_  // NOLINT
+#pragma once
 
+#ifdef CORRADE_TARGET_ANDROID
 #include <android/asset_manager.h>
 #include <android/log.h>
 #include <errno.h>
@@ -36,5 +36,9 @@
     LOGE("*** CHECK FAILED at %s:%d: %s", __FILE__, __LINE__, #condition); \
     abort();                                                               \
   }
-
-#endif  // HELLOVR_APP_SRC_MAIN_JNI_UTIL_H_  // NOLINT
+#else
+#define LOG_TAG "HelloVrApp"
+#define LOGW(...)
+#define LOGD(...)
+#define LOGE(...)
+#endif

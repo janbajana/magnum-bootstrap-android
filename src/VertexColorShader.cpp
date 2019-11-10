@@ -51,15 +51,6 @@ void main() {
         MAGNUM_ASSERT_GL_VERSION_SUPPORTED(GL::Version::GLES300);
 
         const Utility::Resource rs0{"MagnumBootstrapData"};
-
-        std::vector<std::string> resList = rs0.list();
-        for(const auto &ress: resList)
-        {
-                LOGD("DAQRI res: %s \n", ress.c_str());
-        }
-
-            LOGD("DAQRI ress: %s \n", rs0.get("sample_texture.frag").c_str());
-
         const Utility::Resource rs{"MagnumShaders"};
 
         GL::Shader vert{GL::Version::GLES300, GL::Shader::Type::Vertex};
