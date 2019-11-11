@@ -7,6 +7,7 @@
 #include <Magnum/MeshTools/Interleave.h>
 #include <Magnum/MeshTools/CompressIndices.h>
 #include <Magnum/Shaders/VertexColor.h>
+#include "Magnum/GL/AbstractShaderProgram.h"
 #include <Magnum/Primitives/Cube.h>
 
 #ifndef CORRADE_TARGET_ANDROID
@@ -21,36 +22,40 @@
 
 using namespace Magnum;
 
-std::vector<Color3> colors {
-        { 0.5f,  0.5f,  1.0f},
-        { 0.5f,  0.5f,  1.0f},
-        { 0.5f,  0.5f,  1.0f}, /* +Z */
-        { 0.5f,  0.5f,  1.0f},
+constexpr Color3 color1 {1.0F, 1.0F, 1.0F};
+constexpr Color3 color2 = {0.85F, 0.85F, 0.85F};
+constexpr Color3 color3 = {0.8F, 0.8F, 0.8F};
 
-        { 1.0f,  0.5f,  0.5f},
-        { 1.0f,  0.5f,  0.5f},
-        { 1.0f,  0.5f,  0.5f}, /* +X */
-        { 1.0f,  0.5f,  0.5f},
+static std::vector<Color3> colors {
+        color1,
+        color1,
+        color1, /* +Z */
+        color1,
 
-        { 0.5f,  1.0f,  0.5f},
-        { 0.5f,  1.0f,  0.5f},
-        { 0.5f,  1.0f,  0.5f}, /* +Y */
-        { 0.5f,  1.0f,  0.5f},
+        color1,
+        color1,
+        color1, /* +X */
+        color1,
 
-        { 0.0f,  0.0f, 0.5f},
-        { 0.0f,  0.0f, 0.5f},
-        { 0.0f,  0.0f, 0.5f}, /* -Z */
-        { 0.0f,  0.0f, 0.5f},
+        color2,
+        color2,
+        color2, /* +Y */
+        color2,
 
-        { 0.0f, 0.5f,  0.0f},
-        { 0.0f, 0.5f,  0.0f},
-        { 0.0f, 0.5f,  0.0f}, /* -Y */
-        { 0.0f, 0.5f,  0.0f},
+        color2,
+        color2,
+        color2, /* -Z */
+        color2,
 
-        {0.5f,  0.0f,  0.0f},
-        {0.5f,  0.0f,  0.0f},
-        {0.5f,  0.0f,  0.0f}, /* -X */
-        {0.5f,  0.0f,  0.0f}
+        color3,
+        color3,
+        color3, /* -Y */
+        color3,
+
+        color3,
+        color3,
+        color3, /* -X */
+        color3
     };
 
 class MyApplication: public Platform::Application {
@@ -63,8 +68,8 @@ private:
     Shaders::VertexColor2D _shader;
 
     // Magnum::SampleTextureShader _sampleShader;
-    // Magnum::VertexColorShader _vertexColorShader;
-    Magnum::Shaders::VertexColor3D _vertexColor; 
+    Magnum::VertexColorShader _vertexColorShader;
+//    Magnum::Shaders::VertexColor3D _vertexColor;
 
     Matrix4 _transformationMatrix, _projectionMatrix, _viewMatrix;
 
@@ -138,12 +143,12 @@ void MyApplication::drawEvent() {
 
     //mMdlMtx[i] = glm::rotate(mMdlMtx[i], glm::radians(rotateAmount), glm::vec3(0.0f, 1.0f, 0.0f));
 
-    _transformationMatrix = _transformationMatrix*Matrix4::rotationY(1.0_degf);
+    _transformationMatrix = _transformationMatrix*Matrix4::rotationY(0.5_degf);
    
-    _vertexColor.setTransformationProjectionMatrix(_projectionMatrix*(_viewMatrix*_transformationMatrix));
-    //_vertexColorShader.setModelViewProjectionMatrix(_projectionMatrix*(_viewMatrix*_transformationMatrix));
+    //_vertexColor.setTransformationProjectionMatrix(_projectionMatrix*(_viewMatrix*_transformationMatrix));
+    _vertexColorShader.setModelViewProjectionMatrix(_projectionMatrix*(_viewMatrix*_transformationMatrix));
     //_sampleShader.setModelViewProjectionMatrix(_projectionMatrix*(_viewMatrix*_transformationMatrix));
-    _mesh.draw(_vertexColor);
+    _mesh.draw(_vertexColorShader);
 
     swapBuffers();
     redraw();

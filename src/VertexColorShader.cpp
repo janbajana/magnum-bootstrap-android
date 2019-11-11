@@ -17,36 +17,31 @@ in highp vec3 position;
 in mediump vec3 normal;
 in lowp vec3 color;
 
-out lowp vec3 interpolatedColor;
+out lowp vec3 vInterpolatedColor;
 out lowp vec3 vNormal;
 
 void main() {
     gl_Position = transformationProjectionMatrix*vec4(position, 1.0f);
-    interpolatedColor = color;
+    vInterpolatedColor = color;
     vNormal = (transformationProjectionMatrix * vec4(normal.xyz, 0.0)).xyz;
 }
 )";
 
     static const std::string frgShader = R"(
-in lowp vec3 interpolatedColor;
+in lowp vec3 vInterpolatedColor;
 in lowp vec3 vNormal;
 
 out lowp vec4 fragmentColor;
 
 void main() {
-    lowp vec4 tmpFragmentColor = vec4(1.0f, 1.0f, 1.0f, 1.0f);
-
-    lowp vec3 normalNorm = normalize(vNormal);
-
-    lowp float diffuseAmount = dot(normalNorm, vec3(0.8f, 0.8f, 0.0f));
-    diffuseAmount = clamp(diffuseAmount, 0.8, 1.0);
-    fragmentColor = diffuseAmount * tmpFragmentColor;
+    fragmentColor = vec4(vInterpolatedColor, 1.0f);
+    //fragmentColor = vec4(1.0f, 1.0f, 1.0f, 1.0f);
 }
 )";
 
     VertexColorShader::VertexColorShader() {
 
-        LOGD("DAQRI VertexColorShader 0\n");
+        LOGD("DAQRI VertexColorShader\n");
 
         MAGNUM_ASSERT_GL_VERSION_SUPPORTED(GL::Version::GLES300);
 
