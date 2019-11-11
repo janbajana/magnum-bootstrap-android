@@ -10,35 +10,6 @@
 
 namespace Magnum {
 
-    static const std::string vtxShader = R"(
-layout(location = 0) uniform mat4 transformationProjectionMatrix;
-
-in highp vec3 position;
-in mediump vec3 normal;
-in lowp vec3 color;
-
-out lowp vec3 vInterpolatedColor;
-out lowp vec3 vNormal;
-
-void main() {
-    gl_Position = transformationProjectionMatrix*vec4(position, 1.0f);
-    vInterpolatedColor = color;
-    vNormal = (transformationProjectionMatrix * vec4(normal.xyz, 0.0)).xyz;
-}
-)";
-
-    static const std::string frgShader = R"(
-in lowp vec3 vInterpolatedColor;
-in lowp vec3 vNormal;
-
-out lowp vec4 fragmentColor;
-
-void main() {
-    fragmentColor = vec4(vInterpolatedColor, 1.0f);
-    //fragmentColor = vec4(1.0f, 1.0f, 1.0f, 1.0f);
-}
-)";
-
     VertexColorShader::VertexColorShader() {
 
         LOGD("DAQRI VertexColorShader\n");
@@ -52,9 +23,9 @@ void main() {
         GL::Shader frag{GL::Version::GLES300, GL::Shader::Type::Fragment};
 
         vert.addSource(rs.get("generic.glsl"))
-                .addSource(vtxShader);
+                .addSource(rs0.get("vertex_color.vert"));
         frag.addSource(rs.get("generic.glsl"))
-                .addSource(frgShader);
+                .addSource(rs0.get("vertex_color.frag"));
 
         CORRADE_INTERNAL_ASSERT_OUTPUT(GL::Shader::compile({vert, frag}));
 
