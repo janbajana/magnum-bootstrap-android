@@ -17,6 +17,7 @@
 
 #include "SampleTextureShader.h"
 #include "VertexColorShader.h"
+#include "util.h"
 
 using namespace Magnum;
 
@@ -145,6 +146,7 @@ void MyApplication::drawEvent() {
     _mesh.draw(_vertexColor);
 
     swapBuffers();
+    redraw();
 }
 
 MAGNUM_APPLICATION_MAIN(MyApplication)
