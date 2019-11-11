@@ -1,5 +1,9 @@
+.idea/
+.vscode/
 .gradle/
 .externalNativeBuild/
+.cxx
 build*/
 *.kdev4
+*.iml
 *~
