@@ -97,7 +97,7 @@ MyApplication::MyApplication(const Arguments& arguments): Platform::Application{
 void MyApplication::drawEvent() {
 
     GL::Renderer::setClearColor({0.5, 0, 0, 1});
-    GL::defaultFramebuffer.clear(GL::FramebufferClear::Color);
+    GL::defaultFramebuffer.clear(GL::FramebufferClear::Color | GL::FramebufferClear::Depth);
 
     _vertexColorShader.setModelViewProjectionMatrix(_projectionMatrix*(_viewMatrix*_transformationMatrix));
 //    _sampleShader.setModelViewProjectionMatrix(_projectionMatrix*(_viewMatrix*_transformationMatrix));
