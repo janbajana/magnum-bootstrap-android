@@ -29,3 +29,5 @@ target_link_libraries(MyApplication PRIVATE
     Magnum::Trade
     Magnum::MeshTools
     Magnum::Primitives)
+
+install(TARGETS MyApplication DESTINATION bin)
